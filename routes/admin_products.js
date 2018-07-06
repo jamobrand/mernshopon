@@ -21,7 +21,7 @@ router.post('/api/admin/products/add-product', (req, res) => {
 
   Product.findOne({ title: title }, function(err, existingProduct) {
     if (existingProduct) {
-      res.status(404).json({
+      res.status(409).json({
         success: false,
         message: 'Product with that title exists'});
       //Category.find({}, function(err, categories) {});

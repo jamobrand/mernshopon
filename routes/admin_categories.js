@@ -37,7 +37,7 @@ router.put('/api/admin/categories/edit-category/:id', (req, res) => {
 
   Category.findOne({ title: title, _id: {'$ne': id}}, function(err, category) {
     if (category) {
-      res.status(404).json({
+      res.status(409).json({
         success: false,
         message: 'Category with that title exists, choose another'
       });

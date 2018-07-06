@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Category = require('../models/category');
 
 /* Get Categories */
-router.get('/api/admin/categories', (req, res) => {
+router.get('/api/admin/categories', (req, res, next) => {
   Category.find()
   .then(categories => res.json({
     success: true,
@@ -11,7 +11,7 @@ router.get('/api/admin/categories', (req, res) => {
 });
 
 /* Post Category */
-router.post('/api/admin/categories/add-category', (req, res) => {
+router.post('/api/admin/categories/add-category', (req, res, next) => {
   Category.findOne({ title: req.body.title }, function(err, existingCategory) {
     if (existingCategory) {
       res.status(404).json({
@@ -31,7 +31,7 @@ router.post('/api/admin/categories/add-category', (req, res) => {
 });
 
 /* Edit Category */
-router.put('/api/admin/categories/edit-category/:id', (req, res) => {
+router.put('/api/admin/categories/edit-category/:id', (req, res, next) => {
   const title = req.body.title;
   const id = req.params.id;
 
@@ -54,7 +54,7 @@ router.put('/api/admin/categories/edit-category/:id', (req, res) => {
 });
 
 /* Delete Category */
-router.delete('/api/delete-category/:id', (req, res) => {
+router.delete('/api/delete-category/:id', (req, res, next) => {
   Category.findById(req.params.id)
     .then(category => category.remove().then(() => res.json({ success: true, message: 'Category Deleted'})))
     .catch(err => res.status(404).json({ success: false, message: 'Category not Deleted'}))

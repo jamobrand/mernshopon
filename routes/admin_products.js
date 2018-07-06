@@ -4,7 +4,7 @@ const Category = require('../models/category');
 
 
 /* Get Products */
-router.get('/api/admin/products', (req, res) => {
+router.get('/api/admin/products', (req, res, next) => {
   Product.find()
   .then(products => res.json({
     success: true,
@@ -13,7 +13,7 @@ router.get('/api/admin/products', (req, res) => {
 });
 
 /* Post Products */
-router.post('/api/admin/products/add-product', (req, res) => {
+router.post('/api/admin/products/add-product', (req, res, next) => {
   var title = req.body.title;
   var desc = req.body.desc;
   var price = req.body.price;
@@ -41,7 +41,7 @@ router.post('/api/admin/products/add-product', (req, res) => {
 });
 
 /* Edit Product*/
-router.put('/api/admin/products/edit-product/:id', (req, res) => {
+router.put('/api/admin/products/edit-product/:id', (req, res, next) => {
   Category.find({}, function(err, categories) {
     Product.findById(req.params.id, function(err, product) {
     });
@@ -74,7 +74,7 @@ router.put('/api/admin/products/edit-product/:id', (req, res) => {
 });
 
 /* Delete Product */
-router.delete('/api/delete-product/:id', (req, res) => {
+router.delete('/api/delete-product/:id', (req, res, next) => {
   Product.findById(req.params.id)
     .then(product => product.remove().then(() => res.json({ success: true, message: 'Product Deleted'})))
     .catch(err => res.status(404).json({ success: false, message: 'Product not Deleted'}))

@@ -1,4 +1,4 @@
-#MERNSHOP
+## MERNSHOP
 Welcome this is the second version of shoponfoods.
 It's improved from the Backend to the Frontend.
 
@@ -12,8 +12,8 @@ We chose reactjs due to it's native process and how it presents the app in the f
 It's still in development mode as most of the functions of the app are still in development.
 
 
-#Development
+## Development
 
 
-#Production
+## Production
 We're launching soon to the market to see how users can interact with our applications.

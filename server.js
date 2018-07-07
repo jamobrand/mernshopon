@@ -22,11 +22,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+
 const adminCategories = require('./routes/admin_categories');
 const adminProducts = require('./routes/admin_products');
+const userRoutes = require('./routes/user');
 
 app.use(adminCategories);
 app.use(adminProducts);
+app.use(userRoutes);
 
 
 const PORT = process.env.PORT || 5000;

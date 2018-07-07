@@ -56,7 +56,8 @@ router.put('/api/admin/categories/edit-category/:id', (req, res, next) => {
 /* Delete Category */
 router.delete('/api/delete-category/:id', (req, res, next) => {
   Category.findById(req.params.id)
-    .then(category => category.remove().then(() => res.json({ success: true, message: 'Category Deleted'})))
+    .then(category => category.remove()
+    .then(() => res.json({ success: true, message: 'Category Deleted'})))
     .catch(err => res.status(404).json({ success: false, message: 'Category not Deleted'}))
 });
 
